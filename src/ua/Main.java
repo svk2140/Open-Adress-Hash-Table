@@ -22,5 +22,6 @@ public class Main
         assert map.get(301) == null;
         assert map.get(302) == 175L;
         assert map.get(500) == 200L;
+        assert map.size() == 4;
     }
 }
