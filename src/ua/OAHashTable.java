@@ -15,17 +15,11 @@ class OAHashTable<T1, T2> {
         if(size != table.length) {
             for (int i = pos; i < table.length; ++i)
                 if(putAtPos(i, key, value)) 
-                {
-                    ++size;
                     return true;
-                }
 
             for (int i = 0; i < pos; ++i)
                 if(putAtPos(i, key, value)) 
-                {
-                    ++size;
                     return true;
-                }
         }
 
         return false;
@@ -37,6 +31,7 @@ class OAHashTable<T1, T2> {
 
         if (posValue == null) {
             table[pos] = new Pair(key, value);
+            ++size;
             return true;
         } else if (posValue.getKey().equals(key)) {
             table[pos].setValue(value);
