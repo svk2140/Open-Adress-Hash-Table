@@ -12,12 +12,20 @@ class OAHashTable<T1, T2> {
     {
         int pos = key.hashCode() % table.length;
 
-        if(size++ != table.length) {
+        if(size != table.length) {
             for (int i = pos; i < table.length; ++i)
-                if(putAtPos(i, key, value)) return true;
+                if(putAtPos(i, key, value)) 
+                {
+                    ++size;
+                    return true;
+                }
 
             for (int i = 0; i < pos; ++i)
-                if(putAtPos(i, key, value)) return true;
+                if(putAtPos(i, key, value)) 
+                {
+                    ++size;
+                    return true;
+                }
         }
 
         return false;
